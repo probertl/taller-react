@@ -1,0 +1,77 @@
+{
+  "parole": [
+    {
+      "id": "1",
+      "word": "ciao",
+      "translation": "hola"
+    },
+    {
+      "id": "2",
+      "word": "a domani",
+      "translation": "Fins demà"
+    },
+    {
+      "id": "3",
+      "word": "grazie",
+      "translation": "gràcies"
+    },
+    {
+      "id": "4",
+      "word": "per favore",
+      "translation": "si us plau"
+    },
+    {
+      "id": "5",
+      "word": "acqua",
+      "translation": "aigua"
+    },
+    {
+      "id": "6",
+      "word": "vino",
+      "translation": "vi"
+    },
+    {
+      "id": "7",
+      "word": "birra",
+      "translation": "cervesa"
+    },
+    {
+      "id": "8",
+      "word": "pane",
+      "translation": "pa"
+    },
+    {
+      "id": "9",
+      "word": "formaggio",
+      "translation": "formatge"
+    },
+    {
+      "id": "10",
+      "word": "prosciutto",
+      "translation": "pernil"
+    },
+    {
+      "word": "telefonino",
+      "translation": "Telèfon mòbil",
+      "id": "11"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin"
+    },
+    {
+      "id": "2",
+      "username": "armand"
+    },
+    {
+      "id": "3",
+      "username": "user"
+    },
+    {
+      "id": "4",
+      "username": "test"
+    }
+  ]
+}
