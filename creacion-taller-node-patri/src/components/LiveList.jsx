@@ -1,6 +1,8 @@
 //mostra una fitxa individual d’un esdeveniment
 import { useState } from "react";
 import Live from "./Live";
+import AddEvent from "./AddEvent";
+
 
 const INITIAL_EVENTS = [
  {
@@ -55,24 +57,48 @@ export default function LiveList() {
         modifica l’array original en lloc de crear-ne un de nou */}
     };
 
+    const handleAdd = (data) => {
+      setEvents(prev => {
+        // Agafa l’estat actual events com a prev.
+        // Calcula l'ID màxim actual: si hi ha elements, agafa l'últim id; si no, 0.
+        const maxId = prev.length > 0 ? prev[prev.length - 1].id : 0;
+
+        // Crea un nou array amb tots els elements de prev i afegeix un nou objecte
+        // que conté l'ID incrementat i totes les dades passades com a data.
+        return [...prev, { id: maxId + 1, ...data }];
+        
+        // Actualitza l’estat amb aquest nou array, provocant que React redibuixi
+        // la llista amb l’esdeveniment afegit amb un ID correcte.
+      });
+    };
+
+
 
     return (
         <section className="container py-4">
 
-            <h1 className="mb-4">Esdeveniments en viu</h1>
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <h1 className="mb-4">Esdeveniments en viu</h1>
+            </div>
 
-            <button className="btn btn-sm btn-secondary mb-3" onClick={handleSort} disabled={isSorted} >
-              Ordena per data
-            </button>
+            <div>
+              <button className="btn btn-sm btn-secondary m-2" onClick={handleSort} disabled={isSorted} >
+                Ordena per data
+              </button>
+            </div>
+          </div>
+          <AddEvent onAdd={handleAdd} inlineButton/>
+            
 
-            {/* HEm d'efinit abans que es el que utilitzarem */}
-            {events.map(event => (
-                <Live event={event} onDelete={handleDelete}/>
-            ))} {/*Truquem a que es generi una seccio a caddascu
-                key={event.id} fa que el component sigui unic
-            */}
+          {/* HEm d'efinit abans que es el que utilitzarem */}
+          {events.map(event => (
+              <Live event={event} onDelete={handleDelete}/>
+          ))} {/*Truquem a que es generi una seccio a caddascu
+              key={event.id} fa que el component sigui unic
+          */}
 
-            <p className="mt-4">Selecciona un element per veure la fitxa completa</p>
+          <p className="mt-4">Selecciona un element per veure la fitxa completa</p>
         </section>
     );
 }
