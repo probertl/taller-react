@@ -1,4 +1,4 @@
-const Header = () => {
+export default function Header() {
  return (    
     <nav className="navbar sticky-top navbar-expand-lg bg-info">
       <div className="container-fluid">
@@ -31,5 +31,4 @@ const Header = () => {
       </div>
     </nav>
    )
-}
-export default Header
+};
