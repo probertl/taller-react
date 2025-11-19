@@ -1,29 +1,42 @@
+import platja from '../assets/platja.png'
+
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-dark text-white pt-4">
+    <footer className="bg-dark text-white py-4 mt-4">
       <div className="container">
-        <div className="row">
-
-          {/* Sección izquierda */}
-          <div className="col-md-4 mb-3">
-            <h5>La App de Patri</h5>
-            <p>Aplicación de práctica para aprender React y Bootstrap.</p>
+        <div className="row align-items-center">
+          
+          {/* Logo i nom */}
+          <div className="col-md-3 d-flex align-items-center justify-content-center gap-2">
+            <img src={platja} alt="platja" width="32" height="32" />
+            <span className="fw-semibold">La App de Patri</span>
           </div>
 
-          {/* Sección central: enlaces */}
-          <div className="col-md-4 mb-3">
-            &copy; {new Date().getFullYear()} La App de Patri. Tots els drets reservats
+          {/* Text central */}
+          <div className="col-md-6 text-center">
+            <span>&copy; {year} — Tots els drets reservats</span>
           </div>
 
-          {/* Sección derecha: redes sociales */}
-          <div className="col-md-4 mb-3">
-            <i></i>
+          {/* Xarxes socials */}
+          <div className="col-md-3 d-flex justify-content-center gap-2">
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="btn btn-outline-light btn-sm rounded-circle social-icon">
+              <i className="bi bi-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/patricia-robert-lopez/" target="_blank" rel="noopener noreferrer" className="btn btn-outline-light btn-sm rounded-circle social-icon">
+              <i className="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/probertl" target="_blank" rel="noopener noreferrer" className="btn btn-outline-light btn-sm rounded-circle social-icon">
+              <i className="bi bi-github"></i>
+            </a>
           </div>
 
         </div>
       </div>
     </footer>
-  )
-}
+
+  );
+};
 
 export default Footer;
