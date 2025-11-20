@@ -72,6 +72,21 @@ export default function LiveList() {
       });
     };
 
+    {/*Estem creant una funció que es diu handleUpdate, rep el id del event i les noves dades que s'han de mostrar */}
+    const handleUpdate = (id, updatedData) => {
+      {/* setEvents és la manera que React té per canviar la llista d’esdeveniments.
+        prev és l’estat actual de la llista abans de fer el canvi.
+        Això vol dir: “Agafa la llista actual i fes-li aquests canvis” */}
+      setEvents(prev =>
+        prev.map(event => //recórrer tots els elements de la llista
+          event.id === id ? { ...event, ...updatedData } : event
+          // Si coincideix (?)-> copia el que hi ha dis i ho subsitueix per el UpdateData
+        )
+      );
+    };
+
+
+
 
 
     return (
@@ -93,10 +108,25 @@ export default function LiveList() {
 
           {/* HEm d'efinit abans que es el que utilitzarem */}
           {events.map(event => (
-              <Live event={event} onDelete={handleDelete}/>
-          ))} {/*Truquem a que es generi una seccio a caddascu
-              key={event.id} fa que el component sigui unic
-          */}
+              <Live event={event} onDelete={handleDelete} onUpdate={handleUpdate}/>
+          ))}  
+          {/* 
+              1. 
+              onUpdate és un prop és una manera de passar informació o “coses” a un component fill
+              <Saluda nom="Anna" />
+              Aquí nom="Anna" és una prop
+
+              Dins del component Saluda, podem fer
+              function nom(props){
+                return <h1>Hola, {props.nom}!</h1>;
+              }
+
+              Resultat: “Hola, Anna!”
+
+             onUpdate no és màgia ni està predefinida com onClick; 
+             és una prop que tu defineixes i passes al fill, que el pot 
+             cridar quan necessiti avisar el pare que ha canviat alguna cosa
+             */} 
 
           <p className="mt-4">Selecciona un element per veure la fitxa completa</p>
         </section>

@@ -1,12 +1,27 @@
 // src/components/Live.jsx
 import { useState } from "react";
+import EditEvent from "./EditEvent";
+
 
 // /*Se li ha de pasar si hi ha onDelete ja que
 // les dades i funcions passen dels components pares als fills a través de les props
 // */
-export default function Live({ event, onDelete }) {
+export default function Live({ event, onDelete, onUpdate }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    {/*variable d’estat*/}
+
+    {/*onUpdate2 és una funció intermèdia*/}
+    const onUpdate2 = (updatedData) => {
+        {/*Quan l’usuari desa els canvis al formulari (EditEvent), aquesta funció */}
+        setIsEditing(false); {/*Tanca l’edició: setIsEditing(false) */}
+        onUpdate && onUpdate(event.id, updatedData); 
+        //Avisarà el component pare (LiveList) que s’han fet canvis
+        // i se li pasa id i info
+    };
+
+
 
     // Si no hi ha event res
     if (!event) return null;
@@ -29,11 +44,19 @@ export default function Live({ event, onDelete }) {
                         >
                             {isExpanded ? 'Tancar' : 'Veure fitxa'}
                         </button>
+
+                        <button className="btn btn-sm btn-info"
+                            onClick={() => setIsEditing(true)}
+                        >
+                            Editar
+                        </button>
+
                         <button className="btn btn-sm btn-danger"
                             onClick={() => setShowConfirmModal(true)}
                         >
                             Esborrar
                         </button>
+
                     </div>
                 </div>
 
@@ -74,6 +97,20 @@ export default function Live({ event, onDelete }) {
                             </div>
                         </div>
                     </div>
+                )}
+
+                {/*Només mostra el formulari d’edició si isEditing és true */}
+                {isEditing && (
+                    //EditEvent -> rep diverses prop
+                    //event={event} → les dades actuals de l’esdeveniment que volem editar
+                    //onCancel={() => setIsEditing(false)} → funció per tancar el formulari sense desar
+                    //onUpdate={onUpdate2} → funció que es cridarà quan es desa el formulari
+                    <EditEvent
+                        event={event}
+                        onCancel={() => setIsEditing(false)}
+                        onUpdate={onUpdate2}
+                        on
+                    />
                 )}
         </article>
     );
