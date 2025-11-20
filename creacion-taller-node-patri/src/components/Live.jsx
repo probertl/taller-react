@@ -1,5 +1,6 @@
 // src/components/Live.jsx
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import EditEvent from "./EditEvent";
 
 
@@ -39,13 +40,16 @@ export default function Live({ event, onDelete, onUpdate }) {
                     </div>
                     
                     <div>
+                        <Link to={`/events/${event.id}`} className="btn btn-sm btn-warning me-2">
+                            Veure
+                        </Link>
                         <button className="btn btn-sm btn-primary me-2"
                             onClick={() => setIsExpanded(!isExpanded)}
                         >
                             {isExpanded ? 'Tancar' : 'Veure fitxa'}
                         </button>
 
-                        <button className="btn btn-sm btn-info"
+                        <button className="btn btn-sm btn-info me-2"
                             onClick={() => setIsEditing(true)}
                         >
                             Editar

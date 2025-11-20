@@ -1,34 +1,61 @@
-export default function Header() {
- return (    
-    <nav className="navbar sticky-top navbar-expand-lg bg-info">
-      <div className="container-fluid">
-        
-        {/* Nom de l'app */}
-        <a className="navbar-brand" href="#">La App de Patri</a>
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
-        {/* Botó per pantalles petites amb icona hamburgesa (ho he agafat del boostrap)*/}
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="bi bi-person-lines-fill"></span>
+export default function Header() {
+  const { usuari, setUsuari } = useContext(UserContext);
+
+  const handleLogout = () => {
+    setUsuari(null);
+  };
+
+  return (
+    <nav className="navbar navbar-expand-lg bg-info py-4">
+      <div className="container-fluid">
+        {/* Nom de l'app */}
+        <Link to="/" className="navbar-brand fw-bold text-white">
+          La App de Patri
+        </Link>
+
+        {/* Botó per pantalles petites (hamburguesa) */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Enllaços */}
-        <div className="collapse navbar-collapse" id="navbarNav">
-            {/*ms-auto es ql que fa que estiguin a la dreta, s'ha de posar al ul no al div
-            perque es el fill del div que es un contenidor, pero es el pare de el llistat al menu*/}
+        {/* Contingut de la navbar */}
+        <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
+          {/* Enllaços de navegació */}
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" href="#">Inici</a>
+              <Link to="/" className="nav-link text-white">Inici</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Esdeveniments</a>
+              <Link to="/events" className="nav-link text-white">Esdeveniments</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Contacte</a>
+              <Link to="/about" className="nav-link text-white">Contacte</Link>
             </li>
+            {usuari && (
+              <li className="nav-item d-flex align-items-center ms-3">
+                <span className="text-white me-2">
+                  <i className="bi bi-person-fill"></i> <strong>{usuari.username}</strong>
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-sm btn-outline-light"
+                >
+                  <i className="bi bi-box-arrow-right"></i> Sortir
+                </button>
+              </li>
+            )}
           </ul>
         </div>
-
       </div>
     </nav>
-   )
-};
+  );
+}

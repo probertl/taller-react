@@ -152,7 +152,7 @@ export default function ParolaList() {
         <>
           {error && (
             <div className="alert alert-warning" role="alert">
-              ⚠️ {error} (Utilitzant dades locals)
+              {error} (Utilitzant dades locals)
             </div>
           )}
 

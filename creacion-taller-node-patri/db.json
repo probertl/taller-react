@@ -1,0 +1,38 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Muse — Will of the People Tourss",
+      "city": "Barcelona",
+      "date": "2025-07-12",
+      "venue": "Palau Sant Jordi",
+      "description": "Rock simfònic i posada en escena espectacular."
+    },
+    {
+      "id": "2",
+      "title": "Norah Jones — Summer Nights",
+      "city": "Girona",
+      "date": "2025-08-15",
+      "venue": "Auditori",
+      "description": "Jazz suau i íntim en un espai perfecte per a la seva veu."
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "patri"
+    },
+    {
+      "id": "2",
+      "username": "patricia"
+    },
+    {
+      "id": "3",
+      "username": "user"
+    },
+    {
+      "id": "4",
+      "username": "test"
+    }
+  ]
+}
