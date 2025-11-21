@@ -18,3 +18,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Entrar en /taller-node-patri y entonces npm run dev
 
+npm install
+
+npm run server
+
+npm run dev
