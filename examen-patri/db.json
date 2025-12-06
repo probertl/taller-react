@@ -31,7 +31,7 @@
   ],
   "productes": [
     {
-      "id": 1,
+      "id": "1",
       "brand": "Logitech",
       "name": "Ratolí inalàmbric M220",
       "price": 19.99,
@@ -42,10 +42,10 @@
       "description": "Ratolí silenciós, ideal per oficina i estudi."
     },
     {
-      "id": 2,
+      "id": "2",
       "brand": "Apple",
       "name": "Magic Keyboard",
-      "price": 109.0,
+      "price": 109,
       "category": "perifèrics",
       "stock": 12,
       "origin": "Xina",
@@ -53,7 +53,7 @@
       "description": "Teclat bluetooth de perfil baix amb teclat numèric."
     },
     {
-      "id": 3,
+      "id": "3",
       "brand": "Xiaomi",
       "name": "Redmi Buds 4",
       "price": 49.9,
@@ -64,7 +64,7 @@
       "description": "Auriculars True Wireless amb cancel·lació de soroll."
     },
     {
-      "id": 4,
+      "id": "4",
       "brand": "Moleskine",
       "name": "Llibreta A5 Punts",
       "price": 14.5,
@@ -75,7 +75,7 @@
       "description": "Llibreta de tapa tova, ideal per bullet journal."
     },
     {
-      "id": 5,
+      "id": "5",
       "brand": "Nestlé",
       "name": "Cafè soluble Clàssic 200g",
       "price": 5.75,
@@ -86,7 +86,7 @@
       "description": "Cafè soluble intens per als esmorzars ràpids."
     },
     {
-      "id": 6,
+      "id": "6",
       "brand": "Adidas",
       "name": "Samarreta esportiva dona",
       "price": 24.99,
@@ -97,10 +97,10 @@
       "description": "Samarreta transpirable per a entrenaments."
     },
     {
-      "id": 7,
+      "id": "7",
       "brand": "Samsung",
       "name": "Monitor 27\" Full HD",
-      "price": 159.0,
+      "price": 159,
       "category": "electrònica",
       "stock": 18,
       "origin": "Corea del Sud",
@@ -108,7 +108,7 @@
       "description": "Monitor 27 polzades per oficina i gaming casual."
     },
     {
-      "id": 8,
+      "id": "8",
       "brand": "HP",
       "name": "Impressora DeskJet 2720e",
       "price": 69.99,
@@ -119,10 +119,10 @@
       "description": "Impressora multifunció amb WiFi per a ús domèstic."
     },
     {
-      "id": 9,
+      "id": "9",
       "brand": "Sony",
       "name": "Mando PS5 DualSense",
-      "price": 69.0,
+      "price": 69,
       "category": "videojocs",
       "stock": 27,
       "origin": "Japó",
@@ -130,7 +130,7 @@
       "description": "Mando inalàmbric amb feedback hàptic per PS5."
     },
     {
-      "id": 10,
+      "id": "10",
       "brand": "Anker",
       "name": "Powerbank 20.000mAh",
       "price": 39.99,
@@ -141,10 +141,10 @@
       "description": "Bateria externa d'alta capacitat amb càrrega ràpida."
     },
     {
-      "id": 11,
+      "id": "11",
       "brand": "Dell",
       "name": "Portàtil Inspiron 15",
-      "price": 699.0,
+      "price": 699,
       "category": "ordinadors",
       "stock": 15,
       "origin": "Xina",
@@ -152,10 +152,10 @@
       "description": "Portàtil de 15\" per a ús general i estudis."
     },
     {
-      "id": 12,
+      "id": "12",
       "brand": "Lenovo",
       "name": "ThinkPad E14",
-      "price": 849.0,
+      "price": 849,
       "category": "ordinadors",
       "stock": 10,
       "origin": "Xina",
@@ -163,10 +163,10 @@
       "description": "Portàtil professional robust amb teclat retroil·luminat."
     },
     {
-      "id": 13,
+      "id": "13",
       "brand": "Canon",
       "name": "Càmera EOS 250D",
-      "price": 529.0,
+      "price": 529,
       "category": "fotografia",
       "stock": 8,
       "origin": "Japó",
@@ -174,7 +174,7 @@
       "description": "Càmera reflex lleugera per a ús amateur avançat."
     },
     {
-      "id": 14,
+      "id": "14",
       "brand": "Kingston",
       "name": "SSD 1TB NVMe",
       "price": 89.99,
@@ -185,7 +185,7 @@
       "description": "Disc SSD NVMe de 1TB amb alta velocitat de lectura."
     },
     {
-      "id": 15,
+      "id": "15",
       "brand": "Sandisk",
       "name": "USB 64GB Ultra Fit",
       "price": 12.99,
@@ -196,7 +196,7 @@
       "description": "Memòria USB compacta de 64GB."
     },
     {
-      "id": 16,
+      "id": "16",
       "brand": "Bic",
       "name": "Pack 10 bolígrafs blau",
       "price": 3.5,
@@ -207,7 +207,7 @@
       "description": "Clàssics bolígrafs BIC de color blau."
     },
     {
-      "id": 17,
+      "id": "17",
       "brand": "Faber-Castell",
       "name": "Estoig 24 colors",
       "price": 18.75,
@@ -218,10 +218,10 @@
       "description": "Estoig de llapis de colors per dibuix artístic."
     },
     {
-      "id": 18,
+      "id": "18",
       "brand": "Asus",
       "name": "Placa base B550",
-      "price": 129.0,
+      "price": 129,
       "category": "components",
       "stock": 14,
       "origin": "Taiwan",
@@ -229,10 +229,10 @@
       "description": "Placa base per a processadors AMD Ryzen."
     },
     {
-      "id": 19,
+      "id": "19",
       "brand": "Corsair",
       "name": "RAM 16GB DDR4",
-      "price": 75.0,
+      "price": 75,
       "category": "components",
       "stock": 30,
       "origin": "Taiwan",
@@ -240,10 +240,10 @@
       "description": "Mòdul de memòria RAM DDR4 de 16GB."
     },
     {
-      "id": 20,
+      "id": "20",
       "brand": "NZXT",
       "name": "Caixa PC H510",
-      "price": 89.0,
+      "price": 89,
       "category": "components",
       "stock": 9,
       "origin": "Xina",
@@ -251,10 +251,10 @@
       "description": "Torre ATX minimalista amb panell lateral de vidre."
     },
     {
-      "id": 21,
+      "id": "21",
       "brand": "Acer",
       "name": "Monitor 24\" 75Hz",
-      "price": 129.0,
+      "price": 129,
       "category": "electrònica",
       "stock": 25,
       "origin": "Xina",
@@ -262,10 +262,10 @@
       "description": "Monitor 24 polzades amb freqüència de refresc de 75Hz."
     },
     {
-      "id": 22,
+      "id": "22",
       "brand": "JBL",
       "name": "Altaveu Bluetooth Flip 6",
-      "price": 99.0,
+      "price": 99,
       "category": "àudio",
       "stock": 33,
       "origin": "Xina",
@@ -273,10 +273,10 @@
       "description": "Altaveu bluetooth resistent a l'aigua."
     },
     {
-      "id": 23,
+      "id": "23",
       "brand": "Huawei",
       "name": "Rellotge Watch GT 3",
-      "price": 189.0,
+      "price": 189,
       "category": "wearables",
       "stock": 17,
       "origin": "Xina",
@@ -284,10 +284,10 @@
       "description": "Rellotge intel·ligent amb GPS i monitoratge de salut."
     },
     {
-      "id": 24,
+      "id": "24",
       "brand": "Garmin",
       "name": "Forerunner 55",
-      "price": 199.0,
+      "price": 199,
       "category": "wearables",
       "stock": 11,
       "origin": "Taiwan",
@@ -295,7 +295,7 @@
       "description": "Rellotge esportiu per a running amb GPS."
     },
     {
-      "id": 25,
+      "id": "25",
       "brand": "Levi's",
       "name": "Texans 501",
       "price": 79.99,
@@ -306,7 +306,7 @@
       "description": "Texans clàssics de tall recte."
     },
     {
-      "id": 26,
+      "id": "26",
       "brand": "H&M",
       "name": "Samarreta bàsica",
       "price": 7.99,
@@ -317,7 +317,7 @@
       "description": "Samarreta de cotó bàsica, disponible en diversos colors."
     },
     {
-      "id": 27,
+      "id": "27",
       "brand": "Decathlon",
       "name": "Motxilla 20L senderisme",
       "price": 19.99,
@@ -328,10 +328,10 @@
       "description": "Motxilla lleugera per a excursions curtes."
     },
     {
-      "id": 28,
+      "id": "28",
       "brand": "Nike",
       "name": "Sabatilles running Pegasus",
-      "price": 119.0,
+      "price": 119,
       "category": "esport",
       "stock": 22,
       "origin": "Vietnam",
@@ -339,10 +339,10 @@
       "description": "Sabates de running versàtils per entrenament diari."
     },
     {
-      "id": 29,
+      "id": "29",
       "brand": "Ikea",
       "name": "Taula escriptori LINNMON",
-      "price": 39.0,
+      "price": 39,
       "category": "mobles",
       "stock": 50,
       "origin": "Polònia",
@@ -350,15 +350,37 @@
       "description": "Taula senzilla ideal per estudi o oficina a casa."
     },
     {
-      "id": 30,
+      "id": "30",
       "brand": "Ikea",
       "name": "Cadira Markus",
-      "price": 169.0,
+      "price": 169,
       "category": "mobles",
       "stock": 13,
       "origin": "Xina",
       "sku": "IK-MARKUS",
       "description": "Cadira d'oficina ergonòmica amb suport lumbar."
+    },
+    {
+      "id": "85f2",
+      "name": "Jabon",
+      "price": 10,
+      "category": "salud",
+      "brand": null,
+      "origin": "Japon",
+      "sku": null,
+      "description": "jaboooonn",
+      "stock": 20
+    },
+    {
+      "id": "3599",
+      "name": "aaaaaaa",
+      "price": 20,
+      "category": "aa",
+      "brand": null,
+      "origin": null,
+      "sku": null,
+      "description": null,
+      "stock": 0
     }
   ]
 }

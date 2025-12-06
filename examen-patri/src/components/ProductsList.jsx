@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FilterProduct from "./FilterProduct";
 import Product from "./Product";
 import Error from "./Error";
+import AddProduct from "./AddProduct";
 
 
 const API_URL = import.meta.env.VITE_API_URL + "/productes";
@@ -15,7 +16,7 @@ export default function ProductsList() {
 
   // GET inicial
   useEffect(() => {
-// Posas el nom de lo que sigui la app
+    // Posas el nom de lo que sigui la app
     const loadProducts = async () => {
       try {
         setLoading(true);
@@ -42,6 +43,11 @@ export default function ProductsList() {
     loadProducts();
   }, []);
 
+    // Handler que rep el producte nou des d'AddProduct
+    const handleProductAdded = (newProduct) => {
+        setProducts((prev) => [...prev, newProduct]);
+    };
+
 
   return (
     <div>
@@ -50,6 +56,9 @@ export default function ProductsList() {
 
       {/* Menú / filtre de productes (de moment no hi ha) */}
       <FilterProduct />
+
+        {/* Formulari d'alta de producte */}
+        <AddProduct onProductAdded={handleProductAdded} />
 
 
       {loading && <p>Carregant productes...</p>}
@@ -72,3 +81,4 @@ export default function ProductsList() {
     </div>
   );
 }
+
