@@ -1,14 +1,6 @@
 {
   "events": [
     {
-      "id": "1",
-      "title": "Muse — Will of the People Tourss",
-      "city": "Barcelona",
-      "date": "2025-07-12",
-      "venue": "Palau Sant Jordi",
-      "description": "Rock simfònic i posada en escena espectacular."
-    },
-    {
       "id": "2",
       "title": "Norah Jones — Summer Nights",
       "city": "Girona",
