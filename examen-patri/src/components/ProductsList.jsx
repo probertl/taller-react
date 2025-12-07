@@ -43,9 +43,17 @@ export default function ProductsList() {
     loadProducts();
   }, []);
 
-    // Handler que rep el producte nou des d'AddProduct
+    // Handler que rep el producte nou des d'AddProduct per afegir-lo a la llista
     const handleProductAdded = (newProduct) => {
         setProducts((prev) => [...prev, newProduct]);
+    };
+
+    // actualitzar producte existent (UPDATE), pasara de Avi(List) a pare
+    const handleProductUpdated = (updatedProduct) => {
+      // reemplaça en estat el producte que torna el fill EditProduct
+      setProducts((prev) =>
+        prev.map((p) => (p.id === updatedProduct.id ? updatedProduct : p))
+      );
     };
 
 
@@ -72,7 +80,11 @@ export default function ProductsList() {
           ) : (
             <div className="list-group">
               {products.map((product) => (
-                <Product key={product.id} product={product} />
+                <Product 
+                  key={product.id} 
+                  product={product} 
+                  onProductUpdated={handleProductUpdated} // passarem el handler
+                />
               ))}
             </div>
           )}

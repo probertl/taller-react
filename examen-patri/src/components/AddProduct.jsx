@@ -15,7 +15,8 @@ const INITIAL_FORM = {
   sku: "",
   description: ""
 };
-
+// onProductAdded és una funció que ens pot passar el component pare per
+// avisar-lo quan s'ha afegit un producte nou
 export default function AddProduct({ onProductAdded }) {
   const [form, setForm] = useState(INITIAL_FORM);
   const [error, setError] = useState(null);
@@ -63,15 +64,15 @@ export default function AddProduct({ onProductAdded }) {
       return;
     }
 
-    const payload = {
-      name: form.name.trim(),
+    const formData = {
+      name: form.name,
       price: Number(form.price),
-      category: form.category.trim(),
-      brand: form.brand.trim() || null,
-      origin: form.origin.trim() || null,
-      sku: form.sku.trim() || null,
-      description: form.description.trim() || null,
-      stock: form.stock ? Number(form.stock) : 0
+      category: form.category,
+      brand: form.brand || null,
+      origin: form.origin || null,
+      sku: form.sku || null,
+      description: form.description || null,
+      stock: Number(form.stock) || 0
     };
 
     try {
@@ -82,7 +83,7 @@ export default function AddProduct({ onProductAdded }) {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(formData)
       });
 
       if (!res.ok) {
@@ -129,127 +130,69 @@ export default function AddProduct({ onProductAdded }) {
             {/* NAME (obligatori) */}
             <div className="col-md-4">
               <label className="form-label">Nom *</label>
-              <input
-                type="text"
-                name="name"
-                className="form-control"
-                placeholder="Nom del producte"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
+              <input type="text" name="name" className="form-control" placeholder="Nom del producte"
+                value={form.name} onChange={handleChange} required />
             </div>
 
             {/* PRICE (obligatori) */}
             <div className="col-md-2">
               <label className="form-label">Preu (€) *</label>
-              <input
-                type="number"
-                name="price"
-                className="form-control"
-                placeholder="Ex: 19.99"
-                value={form.price}
-                onChange={handleChange}
-                step="0.01"
-                required
-              />
+              <input type="number" name="price" className="form-control" placeholder="Ex: 19.99"
+                value={form.price} onChange={handleChange}
+                min="1" required />
             </div>
 
             {/* CATEGORY (obligatori) */}
             <div className="col-md-3">
               <label className="form-label">Categoria *</label>
-              <input
-                type="text"
-                name="category"
-                className="form-control"
-                placeholder="perifèrics, àudio..."
-                value={form.category}
-                onChange={handleChange}
-                required
-              />
+              <input type="text" name="category" className="form-control" placeholder="perifèrics, àudio..."
+                value={form.category} onChange={handleChange} required />
             </div>
 
             {/* BRAND (opcional) */}
             <div className="col-md-3">
               <label className="form-label">Marca (opcional)</label>
-              <input
-                type="text"
-                name="brand"
-                className="form-control"
-                placeholder="Logitech, Sony..."
-                value={form.brand}
-                onChange={handleChange}
-              />
+              <input type="text" name="brand" className="form-control" placeholder="Logitech, Sony..."
+                value={form.brand} onChange={handleChange} />
             </div>
 
             {/* STOCK (opcional) */}
             <div className="col-md-2">
               <label className="form-label">Stock (opcional)</label>
-              <input
-                type="number"
-                name="stock"
-                className="form-control"
-                placeholder="Ex: 10"
-                value={form.stock}
-                onChange={handleChange}
-              />
+              <input type="number" name="stock" className="form-control" placeholder="Ex: 10"
+                value={form.stock} onChange={handleChange}/>
             </div>
 
             {/* ORIGIN (opcional) */}
             <div className="col-md-3">
               <label className="form-label">Procedència (opcional)</label>
-              <input
-                type="text"
-                name="origin"
-                className="form-control"
-                placeholder="Alemanya, Japó..."
-                value={form.origin}
-                onChange={handleChange}
-              />
+              <input type="text" name="origin" className="form-control" placeholder="Alemanya, Japó..."
+                value={form.origin} onChange={handleChange} />
             </div>
 
             {/* SKU (opcional) */}
             <div className="col-md-3">
               <label className="form-label">SKU (opcional)</label>
-              <input
-                type="text"
-                name="sku"
-                className="form-control"
-                placeholder="Codi intern"
-                value={form.sku}
-                onChange={handleChange}
-              />
+              <input type="text" name="sku" className="form-control" placeholder="Codi intern"
+                value={form.sku} onChange={handleChange} />
             </div>
 
             {/* DESCRIPTION (opcional) */}
             <div className="col-12">
               <label className="form-label">Descripció (opcional)</label>
-              <textarea
-                name="description"
-                className="form-control"
-                rows="2"
-                placeholder="Breu descripció del producte"
-                value={form.description}
-                onChange={handleChange}
-              />
+              <textarea name="description" className="form-control" rows="2" placeholder="Breu descripció del producte"
+                value={form.description} onChange={handleChange} />
             </div>
 
             {/* BOTONS */}
             <div className="col-12 mt-2 d-flex gap-2">
-              <button
-                type="submit"
-                className="btn btn-success"
+              <button type="submit" className="btn btn-success"
                 disabled={!isFormValid || loading}
               >
                 {loading ? "Guardant..." : "Afegir producte"}
               </button>
-
-              <button
-                type="button"
-                className="btn btn-outline-secondary"
-                onClick={handleClear}
-                disabled={loading}
-              >
+              <button type="button" className="btn btn-outline-secondary" 
+                onClick={handleClear} disabled={loading}>
                 Netejar
               </button>
             </div>
