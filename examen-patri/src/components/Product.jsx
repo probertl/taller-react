@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Error from "./Error";
 import EditProduct from "./EditProduct";
+import DeleteProduct from "./DeleteProduct";
 
 const API_URL = import.meta.env.VITE_API_URL + "/productes";
 
 // ara rep onProductUpdated per avisar el pare quan s'actualitza un producte
-export default function Product({ product, onProductUpdated }) {
+export default function Product({ product, onProductUpdated, onProductDeleted }) {
   const { id, name, brand, price, category } = product;
 
   const [showDetails, setShowDetails] = useState(false);
@@ -48,6 +49,7 @@ export default function Product({ product, onProductUpdated }) {
     setShowDetails((prev) => !prev);
   };
 
+
   // Quan obrim EDIT, tanquem SHOW
   const handleToggleEdit = () => {
     setIsEditing((prev) => {
@@ -83,9 +85,7 @@ export default function Product({ product, onProductUpdated }) {
 
         {/* Botons acció */}
         <div className="btn-group btn-group-sm" role="group">
-          <button
-            type="button"
-            className="btn btn-outline-primary"
+          <button type="button" className="btn btn-outline-primary"
             onClick={handleToggle}
           >
             {showDetails ? "HIDE" : "SHOW"}
@@ -98,6 +98,13 @@ export default function Product({ product, onProductUpdated }) {
           >
             {isEditing ? "CANCEL·LAR" : "EDITAR"}
           </button>
+
+          <DeleteProduct
+            productId={id}
+            productName={name}
+            onDeleted={onProductDeleted}
+          />
+
         </div>
       </div>
 

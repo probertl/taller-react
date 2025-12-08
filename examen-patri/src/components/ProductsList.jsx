@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FilterProduct from "./FilterProduct";
 import Product from "./Product";
 import Error from "./Error";
+import Success from "./Success";
 import AddProduct from "./AddProduct";
 
 
@@ -12,6 +13,7 @@ export default function ProductsList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
 
   // GET inicial
@@ -56,6 +58,18 @@ export default function ProductsList() {
       );
     };
 
+    // Quan un producte s'ha d'esborrar
+    const handleProductDeleted = (deletedId, message) => {
+      if (message.type === 'error') {
+        setError(message.text);
+      } else {
+        // eliminem el producte de l'estat a partir de l'id
+        setProducts((prev) => prev.filter((p) => p.id !== deletedId));
+        setSuccess(message.text);
+      }
+    };
+
+
 
   return (
     <div>
@@ -71,6 +85,7 @@ export default function ProductsList() {
 
       {loading && <p>Carregant productes...</p>}
       {error && <Error textToShow={error} />}
+      {success && <Success textToShow={success} />}
 
 
       {!loading && !error && (
@@ -84,6 +99,7 @@ export default function ProductsList() {
                   key={product.id} 
                   product={product} 
                   onProductUpdated={handleProductUpdated} // passarem el handler
+                  onProductDeleted={handleProductDeleted}
                 />
               ))}
             </div>
