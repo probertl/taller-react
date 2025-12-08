@@ -48,6 +48,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<SupermercatsList />} />
               {/* qualsevol ruta desconeguda */}
+              <Route path="/add-supermercat" element={<AddSupermercat />} />
               <Route path="/about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

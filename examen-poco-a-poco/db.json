@@ -24,17 +24,17 @@
   "supermercats": [
     {
       "id": "1",
-      "nom": "Super Patri Centre",
+      "nom": "Super Patri Centresssd",
       "descripcio": "Supermercat al centre de la ciutat",
       "tipus": "urbà",
-      "responsableId": "1"
+      "responsableId": 1
     },
     {
       "id": "2",
-      "nom": "Super Patri Nord",
+      "nom": "Super Patri Nordff",
       "descripcio": "Botiga gran a la zona nord",
       "tipus": "hipermercat",
-      "responsableId": "2"
+      "responsableId": 2
     },
     {
       "id": "3",
@@ -42,6 +42,20 @@
       "descripcio": "Supermercat de platja",
       "tipus": "costaner",
       "responsableId": 1
+    },
+    {
+      "id": "4aa2",
+      "nom": "dd",
+      "descripcio": "",
+      "tipus": "urbà",
+      "responsableId": 1
+    },
+    {
+      "id": "ef6c",
+      "nom": "sss",
+      "descripcio": null,
+      "tipus": "costaner",
+      "responsableId": 3
     }
   ],
   "productes": [
@@ -84,24 +98,45 @@
   "comandes": [
     {
       "id": "f07b",
-      "supermercatId": 1,
-      "producteId": 2,
-      "quantitat": 1,
-      "status": "a_magatzem"
-    },
-    {
-      "id": "f07b",
-      "supermercatId": 1,
-      "producteId": 1,
-      "quantitat": 1,
-      "status": "demanat"
-    },
-    {
-      "id": "f07b",
       "supermercatId": 2,
       "producteId": 1,
       "quantitat": 3,
       "status": "a_magatzem"
+    },
+    {
+      "id": "6798",
+      "supermercatId": 1,
+      "producteId": 2,
+      "quantitat": 1,
+      "status": "demanat"
+    },
+    {
+      "id": "8800",
+      "supermercatId": 1,
+      "producteId": 1,
+      "quantitat": 2,
+      "status": "preparat"
+    },
+    {
+      "id": "db85",
+      "supermercatId": 1,
+      "producteId": 2,
+      "quantitat": 20,
+      "status": "demanat"
+    },
+    {
+      "id": "0dc9",
+      "supermercatId": 1,
+      "producteId": 3,
+      "quantitat": 1,
+      "status": "demanat"
+    },
+    {
+      "id": "2f91",
+      "supermercatId": 1,
+      "producteId": 1,
+      "quantitat": 1,
+      "status": "demanat"
     }
   ]
 }

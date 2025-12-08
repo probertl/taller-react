@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Supermercat from "./Supermercat"; // Component per renderitzar cada supermercat
 import SupermercatFilter from "./SupermercatFilter"; // Component per filtrar
 import Error from "./Error"; // Component per mostrar errors
@@ -71,6 +72,18 @@ export default function SupermercatsList() {
     setFilters(newFilters);
   };
 
+  // Handler per actualitzar supermercat (UPDATE)
+  const handleSupermercatUpdated = (updatedSupermercat) => {
+    setSupermercats((prev) =>
+      prev.map((s) => (s.id === updatedSupermercat.id ? updatedSupermercat : s))
+    );
+  };
+
+  // Handler per eliminar supermercat (DELETE)
+  const handleSupermercatDeleted = (deletedId) => {
+    setSupermercats((prev) => prev.filter((s) => s.id !== deletedId));
+  };
+
 
   return (
     <div className="container-fluid px-4">
@@ -81,6 +94,11 @@ export default function SupermercatsList() {
         onFilterChange={handleFilterChange} 
         filters={filters} 
       />
+
+      {/* Botó per anar a la ruta d'afegir supermercat (CREATE) */}
+      <Link to="/add-supermercat" className="btn btn-primary btn-sm mb-3">
+        Afegir supermercat
+      </Link>
 
       {loading && <p className="text-muted">Carregant supermercats...</p>}
       {error && <Error>{error}</Error>}
@@ -96,6 +114,8 @@ export default function SupermercatsList() {
                 <Supermercat
                   key={supermercat.id}
                   supermercat={supermercat}
+                  onSupermercatUpdated={handleSupermercatUpdated}
+                  onSupermercatDeleted={handleSupermercatDeleted}
                 />
               ))}
             </div>

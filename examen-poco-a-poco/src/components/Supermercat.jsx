@@ -1,15 +1,24 @@
 import { useState, useEffect } from "react";
 import Comanda from "./Comanda";
+import EditSupermercat from "./EditSupermercat";
+import AddComanda from "./AddComanda";
 import Error from "./Error";
 
+const API_URL = import.meta.env.VITE_API_URL + '/supermercats';
 const COMANDES_URL = import.meta.env.VITE_API_URL + '/comandes';
 const USERS_URL = import.meta.env.VITE_API_URL + '/users';
 
-// Li arriba del pare el supermercat a mostrar
-export default function Supermercat({ supermercat }) {
+// Li arriba del pare el supermercat a mostrar i els handlers per CRUD
+export default function Supermercat({
+  supermercat,
+  onSupermercatUpdated,
+  onSupermercatDeleted
+}) {
 
   // Estats per controlar la vista
+  const [isEditing, setIsEditing] = useState(false); // si estem editant el supermercat
   const [showComandes, setShowComandes] = useState(false); // si mostrem les comandes (desplegable)
+  const [showAddComanda, setShowAddComanda] = useState(false); // si mostrem el formulari d'afegir comanda
   const [comandes, setComandes] = useState([]); // llista de comandes
   const [loadingComandes, setLoadingComandes] = useState(false); // si estem carregant comandes
   const [errorComandes, setErrorComandes] = useState(null); // si hi ha hagut un error carregant comandes
@@ -84,6 +93,35 @@ export default function Supermercat({ supermercat }) {
     }
   };
 
+  // Handler per eliminar el supermercat (DELETE)
+  const handleDelete = async () => {
+    if (!window.confirm(`Segur que vols eliminar ${supermercat.nom}?`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_URL}/${supermercat.id}`, {
+        method: "DELETE"
+      });
+
+      if (!res.ok) {
+        setErrorComandes("Error eliminant supermercat");
+        return;
+      }
+      
+      onSupermercatDeleted(supermercat.id);
+    } catch (err) {
+      console.error("Error:", err);
+      setErrorComandes("No s'ha pogut eliminar el supermercat");
+    }
+  };
+
+  // Handler per afegir una nova comanda (CREATE)
+  const handleComandaAdded = (newComanda) => {
+    setComandes((prev) => [...prev, newComanda]);
+    setShowAddComanda(false); // Tanquem el formulari després d'afegir
+  };
+
 
   return (
     <div className="list-group-item">
@@ -99,30 +137,86 @@ export default function Supermercat({ supermercat }) {
           </small>
         </div>
 
-        {/* Botons d'acció: només SHOW/HIDE comandes */}
+        {/* Botons d'acció: SHOW/HIDE, EDITAR i DELETE */}
         <div className="btn-group btn-group-sm" role="group">
-          {/* Si showComandes és false (tancat), mostrem SHOW */}
-          {/* Si showComandes és true (obert), mostrem HIDE */}
+          {/* Botó SHOW/HIDE comandes */}
           <button type="button" className="btn btn-outline-primary"
             onClick={() => {
               if (showComandes) {
                 setShowComandes(false); // Si està obert, el tanquem
               } else {
-                setShowComandes(true); // Si està tancat, l'obrim
+                // Si obrim SHOW, tanquem EDIT
+                setIsEditing(false);
+                setShowComandes(true);
               }
             }}
           >
             {showComandes ? "HIDE" : "SHOW"}
           </button>
+
+          {/* Botó EDITAR/CANCEL·LAR */}
+          <button type="button" className="btn btn-outline-secondary"
+            onClick={() => {
+              if (isEditing) {
+                setIsEditing(false); // Si està editant, cancel·lem
+              } else {
+                // Si obrim EDIT, tanquem SHOW
+                setShowComandes(false);
+                setIsEditing(true);
+              }
+            }}
+          >
+            {isEditing ? "CANCEL·LAR" : "EDITAR"}
+          </button>
+
+          {/* Botó DELETE */}
+          <button type="button" className="btn btn-outline-danger"
+            onClick={handleDelete}
+          >
+            DELETE
+          </button>
         </div>
       </div>
+
+      {/* Formulari d'edició quan EDIT està obert */}
+      {isEditing && (
+        <div className="mt-3 border-top pt-2">
+          <EditSupermercat
+            supermercat={supermercat}
+            onSupermercatUpdated={onSupermercatUpdated}
+            onCancel={() => setIsEditing(false)}
+          />
+        </div>
+      )}
 
       {/* Bloc de comandes (AddComanda + llistat) quan SHOW està obert */}
       {showComandes && (
         <div className="mt-3 border-top pt-2">
           <div className="d-flex justify-content-between align-items-center mb-2">
             <h6 className="mb-0">Comandes ({comandes.length})</h6>
+            {/* Botó per obrir/tancar el formulari d'afegir comanda */}
+            <button
+              type="button"
+              className="btn btn-sm btn-success"
+              onClick={() => {
+                if (showAddComanda) {
+                  setShowAddComanda(false); // Si està obert, el tanquem
+                } else {
+                  setShowAddComanda(true); // Si està tancat, l'obrim
+                }
+              }}
+            >
+              {showAddComanda ? "TANCAR" : "AFEGIR COMANDA"}
+            </button>
           </div>
+
+          {/* Formulari per afegir nova comanda (CREATE) */}
+          {showAddComanda && (
+            <AddComanda 
+              supermercatId={supermercat.id} 
+              onComandaAdded={handleComandaAdded}
+            />
+          )}
 
           {/* Si estem carregant */}
           {loadingComandes && <p>Carregant comandes...</p>}
@@ -142,8 +236,6 @@ export default function Supermercat({ supermercat }) {
             <div className="list-group list-group-flush">
               {comandes.map((comanda) => (
                 <Comanda
-                // Li enviem la comanda per a que aixi despres faci
-                // la petició per carregar el producte
                   key={comanda.id}
                   comanda={comanda}
                 />

@@ -3,8 +3,7 @@ import Warning from "./Warning";
 
 const PRODUCTES_URL = import.meta.env.VITE_API_URL + '/productes';
 
-// Li arriba comanda amb producteId, quantitat i estat
-// per aixi carregar les dades i fer la petició del producte
+// Li arriba comanda amb producteId, quantitat i estat (només visualització)
 export default function Comanda({ comanda }) {
   const [producte, setProducte] = useState(null);
   const [warning, setWarning] = useState(null);

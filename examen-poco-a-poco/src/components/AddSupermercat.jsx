@@ -1,8 +1,9 @@
 // components/AddSupermercat.jsx
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Error from "./Error";
 import Success from "./Success";
+
 
 const API_URL = import.meta.env.VITE_API_URL + '/supermercats';
 const USERS_URL = import.meta.env.VITE_API_URL + '/users';
@@ -22,50 +23,63 @@ export default function AddSupermercat() {
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
 
+  // Primer de tot, carregar usuaris per al select de responsables
   useEffect(() => {
     const loadUsers = async () => {
       try {
         const res = await fetch(USERS_URL);
+        if (!res.ok) {
+          setError("Error carregant usuaris");
+        }
+
         const data = await res.json();
         setUsers(data);
       } catch (err) {
         console.error("Error carregant usuaris:", err);
+        setError("Error carregant usuaris");
       }
     };
     loadUsers();
   }, []);
 
+  // si hi ha cambis al formulari
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    setError(null);
-    setSuccess(null);
+
+    // actualitzar l'estat del formulari
+    setForm((prev) => (
+      { ...prev, [name]: value }
+    ));
+
   };
 
+  // Netejar formulari
   const handleClear = () => {
     setForm(INITIAL_FORM);
-    setError(null);
-    setSuccess(null);
   };
 
+  // Validació del formulari
   const isFormValid =
     form.nom.trim() !== "" &&
     form.tipus !== "" &&
     form.responsableId !== "";
 
+  // Enviar formulari
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
 
+    // si no és vàlid, no enviar
     if (!isFormValid) {
       setError("Cal omplir nom, tipus i responsable.");
       return;
     }
 
+    // dades a enviar
     const formData = {
       nom: form.nom,
-      descripcio: form.descripcio,
+      descripcio: form.descripcio || null,
       tipus: form.tipus,
       responsableId: Number(form.responsableId)
     };
@@ -80,15 +94,17 @@ export default function AddSupermercat() {
       });
 
       if (!res.ok) {
-        throw new Error("Error creant el supermercat");
+        setError("Error creant el supermercat");
       }
 
       const saved = await res.json();
 
       setSuccess("Supermercat creat correctament. Redirigint...");
+      // després d'1 segon, tornar al llistat
       setTimeout(() => {
         navigate("/");
-      }, 1500);
+      }, 1000);
+
     } catch (err) {
       console.error("Error POST supermercat:", err);
       setError("No s'ha pogut crear el supermercat.");
@@ -101,9 +117,11 @@ export default function AddSupermercat() {
     <div className="container-fluid px-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1 className="h4 mb-0">Afegir nou supermercat</h1>
-        <button className="btn btn-sm btn-outline-secondary" onClick={() => navigate("/")}>
-          <i className="bi bi-arrow-left"></i> Tornar
-        </button>
+        <Link to="/">
+          <button className="btn btn-sm btn-outline-secondary">
+            <i className="bi bi-arrow-left"></i> Tornar
+          </button>
+        </Link>
       </div>
 
       <div className="card mb-3">
@@ -114,26 +132,14 @@ export default function AddSupermercat() {
         <form onSubmit={handleSubmit} className="row g-2">
           <div className="col-md-4">
             <label className="form-label">Nom *</label>
-            <input
-              type="text"
-              name="nom"
-              className="form-control"
-              placeholder="Nom del supermercat"
-              value={form.nom}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" name="nom" className="form-control" placeholder="Nom del supermercat"
+              value={form.nom} onChange={handleChange} required />
           </div>
 
           <div className="col-md-3">
             <label className="form-label">Tipus *</label>
-            <select
-              name="tipus"
-              className="form-select"
-              value={form.tipus}
-              onChange={handleChange}
-              required
-            >
+            <select name="tipus" className="form-select"
+              value={form.tipus} onChange={handleChange} required > 
               <option value="">Selecciona tipus</option>
               <option value="urbà">Urbà</option>
               <option value="hipermercat">Hipermercat</option>
@@ -143,14 +149,10 @@ export default function AddSupermercat() {
 
           <div className="col-md-3">
             <label className="form-label">Responsable *</label>
-            <select
-              name="responsableId"
-              className="form-select"
-              value={form.responsableId}
-              onChange={handleChange}
-              required
-            >
+            <select name="responsableId" className="form-select"
+              value={form.responsableId} onChange={handleChange} required >
               <option value="">Selecciona responsable</option>
+              {/* Llista d'usuaris */}
               {users.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.username} ({user.role})
@@ -161,30 +163,18 @@ export default function AddSupermercat() {
 
           <div className="col-md-12">
             <label className="form-label">Descripció</label>
-            <input
-              type="text"
-              name="descripcio"
-              className="form-control"
-              placeholder="Descripció opcional"
-              value={form.descripcio}
-              onChange={handleChange}
-            />
+            <input type="text" name="descripcio" className="form-control"  placeholder="Descripció opcional" 
+              value={form.descripcio} onChange={handleChange} />
           </div>
 
           <div className="col-12 mt-2 d-flex gap-2">
-            <button
-              type="submit"
-              className="btn btn-success"
+            <button type="submit" className="btn btn-success"
               disabled={!isFormValid || loading}
             >
               {loading ? "Guardant..." : "Afegir supermercat"}
             </button>
-            <button
-              type="button"
-              className="btn btn-outline-secondary"
-              onClick={handleClear}
-              disabled={loading}
-            >
+            <button type="button" className="btn btn-outline-secondary"
+              onClick={handleClear} disabled={loading} >
               Netejar
             </button>
           </div>
