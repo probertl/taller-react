@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "patri",
+      "role": "manager"
+    },
+    {
+      "id": "2",
+      "username": "enric",
+      "role": "empleat"
+    },
+    {
+      "id": "3",
+      "username": "anna",
+      "role": "empleat"
+    }
+  ],
+  "supermercats": [
+    {
+      "id": "1",
+      "nom": "Super Patri Centre",
+      "descripcio": "Supermercat al centre de la ciutat",
+      "tipus": "urbà",
+      "responsableId": "1"
+    },
+    {
+      "id": "2",
+      "nom": "Super Patri Nord",
+      "descripcio": "Botiga gran a la zona nord",
+      "tipus": "hipermercat",
+      "responsableId": "2"
+    },
+    {
+      "id": "3",
+      "nom": "Super Patri Costa",
+      "descripcio": "Supermercat de platja",
+      "tipus": "costaner",
+      "responsableId": 1
+    }
+  ],
+  "productes": [
+    {
+      "id": "1",
+      "name": "Pernil ibèric",
+      "description": "Pernil tallat fi",
+      "price": 15.5,
+      "category": "embotits"
+    },
+    {
+      "id": "2",
+      "name": "Pa integralsssssssss",
+      "description": "Barra de pa recent fet",
+      "price": 1.2,
+      "category": "forn"
+    },
+    {
+      "id": "3",
+      "name": "Vi negre Rioja",
+      "description": "Ampolla 75cl",
+      "price": 8.9,
+      "category": "begudes"
+    },
+    {
+      "id": "4",
+      "name": "Formatge manchego",
+      "description": "Curat 12 mesos",
+      "price": 12.5,
+      "category": "lactis"
+    },
+    {
+      "id": "7eac",
+      "name": "ddd",
+      "description": "aaa",
+      "price": 20,
+      "category": "sss"
+    }
+  ],
+  "comandes": [
+    {
+      "id": "f07b",
+      "supermercatId": 1,
+      "producteId": 2,
+      "quantitat": 1,
+      "status": "demanat"
+    }
+  ]
+}

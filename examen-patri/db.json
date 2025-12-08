@@ -29,72 +29,81 @@
       "username": "sss"
     }
   ],
+  "supermercats": [
+    {
+      "id": 1,
+      "nom": "Super Patri Centre",
+      "descripcio": "Supermercat al centre de la ciutat",
+      "tipus": "urbà",
+      "responsable": "Patri"
+    },
+    {
+      "id": 2,
+      "nom": "Super Patri Nord",
+      "descripcio": "Botiga gran a la zona nord",
+      "tipus": "hipermercat",
+      "responsable": "Enric"
+    },
+    {
+      "id": 3,
+      "nom": "Super Patri Costa",
+      "descripcio": "Supermercat de platja, obert tot l'estiu",
+      "tipus": "costaner",
+      "responsable": "Anna"
+    }
+  ],
   "productes": [
     {
-      "id": "11",
-      "brand": "Dell",
-      "name": "Portàtil Inspiron 15",
-      "price": 699,
-      "category": "ordinadors",
-      "stock": 15,
-      "origin": "Xina",
-      "sku": "DELL-INS15",
-      "description": "Portàtil de 15\" per a ús general i estudis."
+      "id": 11,
+      "name": "Pernil ibèric",
+      "description": "Pernil tallat fi",
+      "price": 15.5,
+      "category": "embotits",
+      "origin": "Espanya"
     },
     {
-      "id": "12",
-      "brand": "Lenovo",
-      "name": "ThinkPad E14",
-      "price": 849,
-      "category": "ordinadors",
-      "stock": 10,
-      "origin": "Xina",
-      "sku": "LEN-E14",
-      "description": "Portàtil professional robust amb teclat retroil·luminat."
+      "id": 12,
+      "name": "Pa",
+      "description": "Barra de pa recent fet",
+      "price": 1.2,
+      "category": "forn",
+      "origin": "Catalunya"
     },
     {
-      "id": "14",
-      "brand": "Kingston",
-      "name": "SSD 1TB NVMe",
-      "price": 89.99,
-      "category": "emmagatzematge",
-      "stock": 45,
-      "origin": "Taiwan",
-      "sku": "KNG-1TB-NVME",
-      "description": "Disc SSD NVMe de 1TB amb alta velocitat de lectura."
+      "id": 13,
+      "name": "Vi negre",
+      "description": "Ampolla 75cl",
+      "price": 8.9,
+      "category": "begudes",
+      "origin": "Rioja"
+    }
+  ],
+  "comandes": [
+    {
+      "id": 1,
+      "supermercatId": 1,
+      "status": "demanat",
+      "items": [
+        { "producteId": 11, "quantitat": 1 },
+        { "producteId": 12, "quantitat": 3 }
+      ]
     },
     {
-      "id": "15",
-      "brand": "Sandisk",
-      "name": "USB 64GB Ultra Fit",
-      "price": 12.99,
-      "category": "emmagatzematge",
-      "stock": 100,
-      "origin": "Malàisia",
-      "sku": "SD-USB-64",
-      "description": "Memòria USB compacta de 64GB."
+      "id": 2,
+      "supermercatId": 1,
+      "status": "a_cuina",
+      "items": [
+        { "producteId": 13, "quantitat": 2 }
+      ]
     },
     {
-      "id": "0337",
-      "name": "aaaaaa",
-      "price": 2,
-      "category": "aaa",
-      "brand": null,
-      "origin": null,
-      "sku": null,
-      "description": null,
-      "stock": 0
-    },
-    {
-      "id": "aa46",
-      "name": "www",
-      "price": 2,
-      "category": "ww",
-      "brand": null,
-      "origin": null,
-      "sku": null,
-      "description": null,
-      "stock": 0
+      "id": 3,
+      "supermercatId": 2,
+      "status": "preparat",
+      "items": [
+        { "producteId": 12, "quantitat": 1 }
+      ]
     }
   ]
+
 }

@@ -14,10 +14,7 @@ export default function EditProduct({ product, onProductUpdated }) { // rep el p
     name: product.name,
     price: product.price,
     category: product.category,
-    brand: product.brand || "",
-    stock: product.stock || 0,
     origin: product.origin || "",
-    sku: product.sku || "",
     description: product.description || ""
     };
 
@@ -63,11 +60,8 @@ export default function EditProduct({ product, onProductUpdated }) { // rep el p
       name: form.name,
       price: Number(form.price),
       category: form.category,
-      brand: form.brand || null,
       origin: form.origin || null,
-      sku: form.sku || null,
-      description: form.description || null,
-      stock: Number(form.stock) || 0
+      description: form.description || null
     };
     console.log("DADES A ENVIAR EDIT:", formData);
 
@@ -132,27 +126,9 @@ export default function EditProduct({ product, onProductUpdated }) { // rep el p
 
         {/* OPCIONALS */}
         <div className="col-md-3">
-          <label className="form-label">Marca (opcional)</label>
-          <input type="text" name="brand" className="form-control"
-            value={form.brand} onChange={handleChange} />
-        </div>
-
-        <div className="col-md-2">
-          <label className="form-label">Stock (opcional)</label>
-          <input type="number" name="stock" className="form-control"
-            value={form.stock} onChange={handleChange} />
-        </div>
-
-        <div className="col-md-3">
           <label className="form-label">Procedència (opcional)</label>
           <input type="text" name="origin" className="form-control"
             value={form.origin} onChange={handleChange} />
-        </div>
-
-        <div className="col-md-3">
-          <label className="form-label">SKU (opcional)</label>
-          <input type="text" name="sku" className="form-control"
-            value={form.sku} onChange={handleChange} />
         </div>
 
         <div className="col-12">

@@ -7,12 +7,9 @@ const API_URL = import.meta.env.VITE_API_URL + "/productes";
 
 const INITIAL_FORM = {
   name: "",
-  price: 0,
+  price: "",
   category: "",
-  brand: "",
-  stock: 0,
   origin: "",
-  sku: "",
   description: ""
 };
 // onProductAdded és una funció que ens pot passar el component pare per
@@ -68,11 +65,8 @@ export default function AddProduct({ onProductAdded }) {
       name: form.name,
       price: Number(form.price),
       category: form.category,
-      brand: form.brand || null,
       origin: form.origin || null,
-      sku: form.sku || null,
-      description: form.description || null,
-      stock: Number(form.stock) || 0
+      description: form.description || null
     };
 
     try {
@@ -145,36 +139,16 @@ export default function AddProduct({ onProductAdded }) {
             {/* CATEGORY (obligatori) */}
             <div className="col-md-3">
               <label className="form-label">Categoria *</label>
-              <input type="text" name="category" className="form-control" placeholder="perifèrics, àudio..."
+              <input type="text" name="category" className="form-control" placeholder="embotits, begudes..."
                 value={form.category} onChange={handleChange} required />
-            </div>
-
-            {/* BRAND (opcional) */}
-            <div className="col-md-3">
-              <label className="form-label">Marca (opcional)</label>
-              <input type="text" name="brand" className="form-control" placeholder="Logitech, Sony..."
-                value={form.brand} onChange={handleChange} />
-            </div>
-
-            {/* STOCK (opcional) */}
-            <div className="col-md-2">
-              <label className="form-label">Stock (opcional)</label>
-              <input type="number" name="stock" className="form-control" placeholder="Ex: 10"
-                value={form.stock} onChange={handleChange}/>
             </div>
 
             {/* ORIGIN (opcional) */}
             <div className="col-md-3">
-              <label className="form-label">Procedència (opcional)</label>
-              <input type="text" name="origin" className="form-control" placeholder="Alemanya, Japó..."
+              <label className="form-label">Procedència (opcional)
+              </label>
+              <input type="text" name="origin" className="form-control" placeholder="Espanya, França..."
                 value={form.origin} onChange={handleChange} />
-            </div>
-
-            {/* SKU (opcional) */}
-            <div className="col-md-3">
-              <label className="form-label">SKU (opcional)</label>
-              <input type="text" name="sku" className="form-control" placeholder="Codi intern"
-                value={form.sku} onChange={handleChange} />
             </div>
 
             {/* DESCRIPTION (opcional) */}

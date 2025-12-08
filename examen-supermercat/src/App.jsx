@@ -4,10 +4,9 @@ import { Routes, Route } from "react-router-dom";
 
 import Auth from "./components/Auth";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import SupermercatsList from "./components/SupermercatsList";
-import ProductsList from "./components/ProductsList";
-import About from "./components/About";
+import Productes from "./components/Productes";
+import AddSupermercat from "./components/AddSupermercat";
 import NotFound from "./components/NotFound";
 
 export const UserContext = createContext(null);
@@ -38,18 +37,15 @@ export default function App() {
           <Header onLogout={handleLogout} />
 
           {/* Contingut principal amb rutes */}
-          <main className="flex-fill container py-4">
+          <main className="flex-fill py-3">
             <Routes>
               <Route path="/" element={<SupermercatsList />} />
-              <Route path="/products" element={<ProductsList />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/add-supermercat" element={<AddSupermercat />} />
+              <Route path="/productes" element={<Productes />} />
               {/* qualsevol ruta desconeguda */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
-
-          {/* Footer */}
-          <Footer />
         </div>
       )}
     </UserContext.Provider>

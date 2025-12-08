@@ -9,7 +9,7 @@ export default function Header({ onLogout }) {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          Examen Productes
+          Examen Supermercat-Productes
         </Link>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
@@ -19,7 +19,7 @@ export default function Header({ onLogout }) {
         <div className="collapse navbar-collapse" id="mainNavbar">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/products">
                 Productes
               </Link>
             </li>
@@ -27,6 +27,12 @@ export default function Header({ onLogout }) {
             <li className="nav-item">
               <Link className="nav-link" to="/about">
                 About
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Supermercats
               </Link>
             </li>
 

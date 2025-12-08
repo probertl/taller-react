@@ -7,7 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL + "/productes";
 
 // ara rep onProductUpdated per avisar el pare quan s'actualitza un producte
 export default function Product({ product, onProductUpdated, onProductDeleted }) {
-  const { id, name, brand, price, category } = product;
+  const { id, name, price, category, origin, description } = product; // dades base segons nou esquema
 
   const [showDetails, setShowDetails] = useState(false);
   const [details, setDetails] = useState(null);
@@ -70,7 +70,7 @@ export default function Product({ product, onProductUpdated, onProductDeleted })
   return (
     <div className="list-group-item">
       <div className="d-flex justify-content-between align-items-center">
-        {/* Info principal */}
+        {/* Info principal (nom, preu, categoria, origen) */}
         <div>
           <div className="fw-semibold">
             Producte: {name || "(sense nom)"}
@@ -79,7 +79,7 @@ export default function Product({ product, onProductUpdated, onProductDeleted })
             Preu: {price} € · Categoria: {category}
           </div>
           <div className="text-muted small">
-            Marca: {brand || "(sense marca)"}
+            Origen: {origin || "(sense origen)"}
           </div>
         </div>
 
@@ -120,19 +120,12 @@ export default function Product({ product, onProductUpdated, onProductDeleted })
           {!loadingDetails && !errorDetails && details && (
             <>
               <div className="small">
-                <strong>Stock:</strong>
-                {details.stock || "(sense stock)"} unitats
-              </div>
-              <div className="small">
                 <strong>Procedència:</strong>
                 {details.origin || "(sense procedència)"}
               </div>
-              <div className="small">
-                <strong>SKU:</strong> {details.sku || "(sense SKU)"}
-              </div>
               <div className="small mt-1">
                 <strong>Descripció:</strong>
-                {details.description || "(sense descripció)"}
+                {details.description || description || "(sense descripció)"}
               </div>
             </>
           )}
