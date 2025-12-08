@@ -122,6 +122,18 @@ export default function Supermercat({
     setShowAddComanda(false); // Tanquem el formulari després d'afegir
   };
 
+  // Handler per actualitzar una comanda (UPDATE)
+  const handleComandaUpdated = (updatedComanda) => {
+    setComandes((prev) =>
+      prev.map((c) => (c.id === updatedComanda.id ? updatedComanda : c))
+    );
+  };
+
+  // Handler per eliminar una comanda (DELETE)
+  const handleComandaDeleted = (deletedId) => {
+    setComandes((prev) => prev.filter((c) => c.id !== deletedId));
+  };
+
 
   return (
     <div className="list-group-item">
@@ -238,6 +250,8 @@ export default function Supermercat({
                 <Comanda
                   key={comanda.id}
                   comanda={comanda}
+                  onComandaUpdated={handleComandaUpdated}
+                  onComandaDeleted={handleComandaDeleted}
                 />
               ))}
             </div>

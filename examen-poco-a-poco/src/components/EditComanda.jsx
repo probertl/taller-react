@@ -6,6 +6,7 @@ import Error from "./Error";
 const COMANDES_URL = import.meta.env.VITE_API_URL + '/comandes';
 const PRODUCTES_URL = import.meta.env.VITE_API_URL + '/productes';
 
+// El pare li passarà la comanda a editar i el handler per quan s'actualitzi
 export default function EditComanda({ comanda, onComandaUpdated, onCancel }) {
   const [productes, setProductes] = useState([]);
   const [form, setForm] = useState({
@@ -55,17 +56,19 @@ export default function EditComanda({ comanda, onComandaUpdated, onCancel }) {
     try {
       setLoading(true);
 
-      // PUT per actualitzar la comanda (manté l'estat actual)
-      const res = await fetch(`${COMANDES_URL}/${comanda.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+        const editFormData = {
           id: comanda.id,
           supermercatId: comanda.supermercatId,
           producteId: Number(form.producteId),
           quantitat: Number(form.quantitat),
           status: comanda.status // Mantenim l'estat actual
-        })
+        };
+
+      // PUT per actualitzar la comanda (manté l'estat actual)
+      const res = await fetch(`${COMANDES_URL}/${comanda.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editFormData)
       });
 
       if (!res.ok) {
@@ -88,18 +91,13 @@ export default function EditComanda({ comanda, onComandaUpdated, onCancel }) {
       <h6 className="mb-2">Editar comanda</h6>
 
       {error && <Error>{error}</Error>}
-
+    
       <form className="row g-2" onSubmit={handleSubmit}>
         {/* Desplegable de productes */}
         <div className="col-md-6">
           <label className="form-label small">Producte *</label>
-          <select
-            name="producteId"
-            className="form-select form-select-sm"
-            value={form.producteId}
-            onChange={handleChange}
-            required
-          >
+          <select name="producteId" className="form-select form-select-sm"
+            value={form.producteId} onChange={handleChange} required >
             <option value="">Selecciona producte</option>
             {productes.map((p) => (
               <option key={p.id} value={p.id}>
@@ -112,31 +110,19 @@ export default function EditComanda({ comanda, onComandaUpdated, onCancel }) {
         {/* Quantitat */}
         <div className="col-md-3">
           <label className="form-label small">Quantitat *</label>
-          <input
-            type="number"
-            name="quantitat"
-            className="form-control form-control-sm"
-            value={form.quantitat}
-            onChange={handleChange}
-            min="1"
-            required
-          />
+          <input type="number" name="quantitat" className="form-control form-control-sm"
+            value={form.quantitat} onChange={handleChange} min="1" required />
+
         </div>
 
         {/* Botons */}
         <div className="col-md-3 d-flex align-items-end gap-2">
-          <button
-            type="submit"
-            className="btn btn-sm btn-primary"
+          <button type="submit" className="btn btn-sm btn-primary"
             disabled={loading || !isFormValid}
           >
             {loading ? "Guardant..." : "Guardar"}
           </button>
-          <button
-            type="button"
-            className="btn btn-sm btn-secondary"
-            onClick={onCancel}
-            disabled={loading}
+          <button type="button" className="btn btn-sm btn-secondary" onClick={onCancel} disabled={loading}
           >
             Cancel·lar
           </button>

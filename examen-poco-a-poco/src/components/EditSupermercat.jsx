@@ -76,7 +76,7 @@ export default function EditSupermercat({ supermercat, onSupermercatUpdated, onC
       nom: form.nom,
       descripcio: form.descripcio,
       tipus: form.tipus,
-      responsableId: Number(form.responsableId)
+      responsableId: form.responsableId
     };
 
     try {

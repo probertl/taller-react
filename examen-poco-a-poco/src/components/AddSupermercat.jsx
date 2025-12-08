@@ -81,7 +81,7 @@ export default function AddSupermercat() {
       nom: form.nom,
       descripcio: form.descripcio || null,
       tipus: form.tipus,
-      responsableId: Number(form.responsableId)
+      responsableId: form.responsableId
     };
 
     try {

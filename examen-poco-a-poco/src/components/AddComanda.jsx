@@ -59,8 +59,8 @@ export default function AddComanda({ supermercatId, onComandaAdded }) {
       // POST nova comanda amb estat inicial "demanat"
 
       const formData = {
-        supermercatId: Number(supermercatId),
-        producteId: Number(form.producteId),
+        supermercatId: supermercatId,
+        producteId: form.producteId,
         quantitat: Number(form.quantitat),
         status: "demanat" // estat inicial sempre és "demanat"
       };

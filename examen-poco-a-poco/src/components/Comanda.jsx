@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import EditComanda from "./EditComanda";
 import Warning from "./Warning";
 
 const PRODUCTES_URL = import.meta.env.VITE_API_URL + '/productes';
+const COMANDES_URL = import.meta.env.VITE_API_URL + '/comandes';
 
-// Li arriba comanda amb producteId, quantitat i estat (només visualització)
-export default function Comanda({ comanda }) {
+// Li arriba comanda amb producteId, quantitat i estat
+export default function Comanda({ comanda, onComandaUpdated, onComandaDeleted }) {
   const [producte, setProducte] = useState(null);
   const [warning, setWarning] = useState(null);
+  const [isEditing, setIsEditing] = useState(false); // si estem editant la comanda
 
   // Carregar dades del producte
   useEffect(() => {
@@ -30,6 +33,30 @@ export default function Comanda({ comanda }) {
     loadProducte();
   }, [comanda.producteId]);
 
+  // Handler per actualitzar la comanda (UPDATE) - crida el pare
+  const handleComandaUpdated = (updatedComanda) => {
+    onComandaUpdated(updatedComanda);
+    setIsEditing(false);
+  };
+
+  // Handler per eliminar la comanda (DELETE)
+  const handleDelete = async () => {
+    if (!window.confirm("Eliminar aquesta comanda?")) return;
+
+    try {
+      const res = await fetch(`${COMANDES_URL}/${comanda.id}`, {
+        method: "DELETE"
+      });
+
+      if (!res.ok) throw new Error("Error eliminant comanda");
+      
+      onComandaDeleted(comanda.id);
+    } catch (err) {
+      console.error("Error:", err);
+      alert("No s'ha pogut eliminar la comanda");
+    }
+  };
+
   // Si hi ha error carregant el producte
   if (warning) {
     return (
@@ -44,15 +71,56 @@ export default function Comanda({ comanda }) {
     return <div className="list-group-item">Carregant...</div>;
   }
 
+  const isFinalitzat = comanda.status === "finalitzat";
+
   return (
     <div className="list-group-item">
-      <div className="fw-semibold">{producte.name}</div>
-      <div className="text-muted small">
-        Quantitat: {comanda.quantitat} · Preu: {producte.price}€
+      <div className="d-flex justify-content-between align-items-start">
+        <div className="flex-grow-1">
+          <div className="fw-semibold">{producte.name}</div>
+          <div className="text-muted small">
+            Quantitat: {comanda.quantitat} · Preu: {producte.price}€
+          </div>
+          <div className="mt-2">
+            <span className="badge bg-secondary">Estat: {comanda.status}</span>
+          </div>
+        </div>
+
+        <div className="d-flex gap-2">
+          {/* Botó EDITAR/CANCEL·LAR si NO està finalitzat */}
+          {!isFinalitzat && (
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-secondary"
+              onClick={() => {
+                if (isEditing) {
+                  setIsEditing(false);
+                } else {
+                  setIsEditing(true);
+                }
+              }}
+            >
+              {isEditing ? "CANCEL·LAR" : "EDITAR"}
+            </button>
+          )}
+
+          {/* Botó DELETE */}
+          <button type="button" className="btn btn-sm btn-outline-danger"
+            onClick={handleDelete}
+          >
+            DELETE
+          </button>
+        </div>
       </div>
-      <div className="mt-2">
-        <span className="badge bg-secondary">Estat: {comanda.status}</span>
-      </div>
+
+      {/* Formulari d'edició quan EDIT està obert i NO està finalitzat */}
+      {isEditing && !isFinalitzat && (
+        <EditComanda
+          comanda={comanda}
+          onComandaUpdated={handleComandaUpdated}
+          onCancel={() => setIsEditing(false)}
+        />
+      )}
     </div>
   );
 }
