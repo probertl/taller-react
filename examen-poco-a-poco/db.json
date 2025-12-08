@@ -42,20 +42,6 @@
       "descripcio": "Supermercat de platja",
       "tipus": "costaner",
       "responsableId": 1
-    },
-    {
-      "id": "4aa2",
-      "nom": "dd",
-      "descripcio": "",
-      "tipus": "urbà",
-      "responsableId": 1
-    },
-    {
-      "id": "ef6c",
-      "nom": "sss",
-      "descripcio": null,
-      "tipus": "costaner",
-      "responsableId": 3
     }
   ],
   "productes": [
@@ -111,46 +97,11 @@
       "status": "finalitzat"
     },
     {
-      "id": "8800",
-      "supermercatId": 1,
-      "producteId": 2,
-      "quantitat": 2,
-      "status": "finalitzat"
-    },
-    {
       "id": "db85",
       "supermercatId": 1,
       "producteId": 3,
       "quantitat": 20,
-      "status": "demanat"
-    },
-    {
-      "id": "0dc9",
-      "supermercatId": 1,
-      "producteId": null,
-      "quantitat": 1,
-      "status": "demanat"
-    },
-    {
-      "id": "2f91",
-      "supermercatId": 1,
-      "producteId": 1,
-      "quantitat": 1,
-      "status": "demanat"
-    },
-    {
-      "id": "c866",
-      "supermercatId": 1,
-      "producteId": null,
-      "quantitat": 1,
-      "status": "demanat"
-    },
-    {
-      "id": "fd77",
-      "supermercatId": "1",
-      "producteId": "7eac",
-      "quantitat": 1,
-      "status": "demanat"
+      "status": "finalitzat"
     }
   ]
 }
