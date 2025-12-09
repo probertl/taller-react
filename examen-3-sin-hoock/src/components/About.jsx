@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div className="container mt-4">
       <h2>Sobre l'aplicació</h2>
-      <p className="lead">Nom: Enric</p>
+      <p className="lead">Nom: Patri</p>
       <p>Aplicació de gestió de productes amb React (sense Redux ni React Hook Form)</p>
       <ul>
         <li>Autenticació amb Context API</li>

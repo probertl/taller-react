@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "patri",
+      "role": "manager"
+    },
+    {
+      "id": "2",
+      "username": "enric",
+      "role": "empleat"
+    },
+    {
+      "id": "3",
+      "username": "anna",
+      "role": "empleat"
+    }
+  ],
+  "products": [
+    {
+      "id": "2",
+      "title": "Producto B",
+      "price": 120,
+      "description": "Descripción del producto A",
+      "category": "Tecnología",
+      "images": [
+        "https://via.placeholder.com/150",
+        "https://via.placeholder.com/200"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Producto C",
+      "price": 120,
+      "description": "Descripción del producto A",
+      "category": "Tecnología",
+      "images": [
+        "https://via.placeholder.com/150",
+        "https://via.placeholder.com/200"
+      ]
+    },
+    {
+      "id": "b72e",
+      "title": "dd",
+      "description": "",
+      "price": 1,
+      "category": "Tecnologia",
+      "images": []
+    },
+    {
+      "id": "c3c9",
+      "title": "cfv",
+      "description": "",
+      "price": 1,
+      "category": "menjar",
+      "images": []
+    }
+  ]
+}
