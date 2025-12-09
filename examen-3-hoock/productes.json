@@ -1,0 +1,112 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Essence Mascara Lash Princess",
+      "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+      "category": "beauty",
+      "price": 9.99,
+      "brand": "Essence",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Eyeshadow Palette with Mirror",
+      "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+      "category": "beauty",
+      "price": 19.99,
+      "brand": "Glamour Beauty",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Powder Canister",
+      "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
+      "category": "beauty",
+      "price": 14.99,
+      "brand": "Velvet Touch",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Powder%20Canister/1.png"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Red Lipstick",
+      "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+      "category": "beauty",
+      "price": 12.99,
+      "brand": "Chic Cosmetics",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Red Nail Polish",
+      "description": "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
+      "category": "beauty",
+      "price": 8.99,
+      "brand": "Nail Couture",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Nail%20Polish/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Red%20Nail%20Polish/1.png"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Facial Cleanser",
+      "description": "The Facial Cleanser is a gentle and effective formula designed to remove impurities and refresh the skin. Suitable for all skin types, it leaves the skin feeling clean and revitalized.",
+      "category": "beauty",
+      "price": 11.99,
+      "brand": "Pure Glow",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Facial%20Cleanser/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Facial%20Cleanser/1.png"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Hydrating Face Serum",
+      "description": "The Hydrating Face Serum is a lightweight and fast-absorbing formula that provides intense hydration to the skin. Enriched with vitamins and antioxidants, it helps to improve skin texture and radiance.",
+      "category": "beauty",
+      "price": 24.99,
+      "brand": "Skin Essentials",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Hydrating%20Face%20Serum/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Hydrating%20Face%20Serum/1.png"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Makeup Remover Wipes",
+      "description": "The Makeup Remover Wipes are pre-moistened wipes designed to effectively remove makeup and impurities from the skin. Gentle and convenient, they are perfect for on-the-go cleansing.",
+      "category": "beauty",
+      "price": 6.99,
+      "brand": "Clean Sweep",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Makeup%20Remover%20Wipes/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Makeup%20Remover%20Wipes/1.png"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Blush Compact",
+      "description": "The Blush Compact offers a natural flush of color to the cheeks. With a silky-smooth texture, it blends easily for a radiant and healthy-looking complexion.",
+      "category": "beauty",
+      "price": 13.99,
+      "brand": "Radiant Glow",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Blush%20Compact/thumbnail.png",
+      "images": [
+        "https://cdn.dummyjson.com/products/images/beauty/Blush%20Compact/1.png"
+      ]
+    }
+  ]
+}
